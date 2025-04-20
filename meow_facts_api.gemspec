@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/meow_facts_api/version"
+require_relative "lib/config/version"
 
 Gem::Specification.new do |spec|
   spec.name = "meow_facts_api"
