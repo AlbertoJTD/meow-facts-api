@@ -6,11 +6,10 @@ require_relative './meow_facts_api/fetcher'
 
 module MeowFactsApi
   extend ErrorHandling
-  extend Fetcher
 
   class << self
     def fact
-      MeowFactsApi::Fetcher.fact
+      Fetcher.call
     rescue StandardError => e
       handle_error(e)
     end
