@@ -14,7 +14,9 @@ class Fetcher
   end
 
   def call
-    response = Net::HTTP.get_response(API_URL)
+    uri = API_URL
+    uri.query = URI.encode_www_form(params)
+    response = Net::HTTP.get_response(uri)
     JSON.parse(response.body)
   end
 end
