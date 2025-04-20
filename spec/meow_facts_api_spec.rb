@@ -35,6 +35,9 @@ RSpec.describe MeowFactsApi do
         expect(result['data']).to be_an(Array)
         expect(result.keys).to include('data')
       end
+
+      it 'returns cat fact with uppecase params'
+      it 'ignore extra params'
     end
 
     context 'language not supported' do
@@ -46,6 +49,9 @@ RSpec.describe MeowFactsApi do
           'error' => "MeowFactsApi::LanguageNotSupportedError => Language not supported: #{lang}"
         })
       end
+
+      it 'returns an error with less than 0 facts'
+      it 'returns an error with invalid language and a valid count'
     end
   end
 end
