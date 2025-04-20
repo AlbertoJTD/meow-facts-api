@@ -2,19 +2,14 @@
 
 require_relative 'meow_facts_api/version'
 require_relative 'meow_facts_api/error_handling'
-
-require 'net/http'
-require 'json'
+require_relative 'meow_facts_api/fetcher'
 
 module MeowFactsApi
   extend ErrorHandling
 
-  API_URL = URI('https://meowfacts.herokuapp.com/')
-
   class << self
     def fact
-      response = Net::HTTP.get_response(API_URL)
-      JSON.parse(response.body)
+      MeowFactsApi::Fetcher.fact
     rescue StandardError => e
       handle_error(e)
     end
