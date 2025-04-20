@@ -25,5 +25,27 @@ RSpec.describe MeowFactsApi do
       expect(result['data'].first).to be_a(String)
       expect(result.keys).to include('data')
     end
+
+    context 'supported language' do
+      it 'returns a cat fact in the supported language' do
+        lang = 'eng-us'
+        result = described_class.fact(lang:)
+
+        expect(result).to be_a(Hash)
+        expect(result['data']).to be_an(Array)
+        expect(result.keys).to include('data')
+      end
+    end
+
+    context 'language not supported' do
+      it 'returns error hash for unsupported language' do
+        lang = 'invalid_language'
+        result = described_class.fact(lang:)
+
+        expect(result).to eq({
+          'error' => "MeowFactsApi::LanguageNotSupportedError => Language not supported: #{lang}"
+        })
+      end
+    end
   end
 end
