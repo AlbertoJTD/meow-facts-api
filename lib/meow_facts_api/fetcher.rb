@@ -7,7 +7,7 @@ class Fetcher
   API_URL = URI(MeowFactsApi::BASE_URI)
   VALID_PARAMS = MeowFactsApi::VALID_PARAMS
 
-  attr_reader :params
+  attr_accessor :params
 
   def initialize(params)
     @params = params
