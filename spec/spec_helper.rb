@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "meow_facts_api"
+require 'net/http'
+require 'json'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
